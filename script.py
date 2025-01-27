@@ -2,6 +2,7 @@ import pyautogui
 import time
 import pygetwindow as gw
 import sys
+import argparse
 
 def focus_gmail_window(window_title="Gmail"):
     """
@@ -42,9 +43,30 @@ def archive_emails(n_iterations, select_pause=1, archive_pause=1):
 
     print("Archiving complete.")
 
+def parse_arguments():
+    """
+    Parses command-line arguments.
+
+    Returns:
+        argparse.Namespace: Parsed arguments with 'n' attribute.
+    """
+    parser = argparse.ArgumentParser(description="Automate archiving of Gmail emails in ARC.")
+    parser.add_argument(
+        '-n', '--iterations',
+        type=int,
+        default=1,
+        help='Number of times to perform the archive action (default: 1)'
+    )
+    return parser.parse_args()
+
 def main():
-    # Number of times to repeat the archiving process
-    n = 10  # You can change this value as needed
+    # Parse command-line arguments
+    args = parse_arguments()
+    n = args.iterations
+
+    if n < 1:
+        print("Number of iterations must be at least 1.")
+        sys.exit(1)
 
     # Focus the Gmail window in ARC
     focus_gmail_window(window_title="Gmail")  # Adjust if necessary
