@@ -19,7 +19,7 @@ ics==0.7.2
 idna==3.4
 ipython==8.31.0
 jedi==0.19.2
-Jinja2==3.1.5
+Jinja2==3.1.6
 jsonpickle==4.0.1
 lxml @ file:///private/tmp/python-lxml-20240108-4680-7k7if8/lxml-5.1.0
 MarkupSafe==3.0.2
